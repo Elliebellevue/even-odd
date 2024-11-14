@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Coding assignment # 7 </title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+   <script>
+        alert("Welcome!");
+        let userName = prompt("What's your name?");
+        let running = "";
+                    
+        let countWin = 0;
+        let countLose = 0;
+        while (true) {
+            let userCall;
+
+            while (true) {
+                userCall = prompt("What do you call (odd/even)?");
+                userCall = userCall.toLowerCase();
+                if(userCall ==="even" || userCall === "odd") {
+                    break;
+                } else {
+                    alert("Invalid input. Please try again!");
+                }
+            }
+
+            let countToThree = 3;
+            let firstRandomNumber;
+            let secondRandomNumber;
+            while (countToThree > 1) {
+                alert("Computer sum in " + countToThree + " moments");
+                countToThree--;
+                firstRandomNumber = Math.floor(Math.random() * 4) + 1;
+                secondRandomNumber = Math.floor(Math.random() * 4) + 1;
+            }
+
+            let computerSum = firstRandomNumber + secondRandomNumber;
+            let computerResult = "";
+            if (computerSum % 2 == 0) {
+                computerResult = "even";
+            } else {
+                computerResult = "odd";
+            }
+
+            let whoWins = "";
+            if (userCall === "even" && computerResult === "even") {
+                whoWins = "user";
+            } 
+            if (userCall === "even" && computerResult === "odd") {
+                whoWins = "computer";
+            }
+            if (userCall === "odd" && computerResult === "odd") {
+                whoWins = "user";
+            }
+            if (userCall === "even" && computerResult === "odd") {
+                whoWins = "computer"
+            }
+
+            let userResult;
+            switch (whoWins) {
+                case "user":
+                    countWin++;
+                    userResult = "Win";
+                    break;
+                case "computer":
+                    countLose++;
+                    userResult = "Lose";
+                    break;
+                default:
+                    break;
+            }
+
+            // display result 
+            running = prompt(`${userName}, you chose ${userCall}, 
+            The sum was ${computerSum}, which is an ${computerResult}, you ${userResult}!That's ${countWin} wins and ${countLose} loses!.
+            Would you like to play again? (y/n)`);
+
+            if (running != undefined) {
+                if (running === "y") {
+                    continue;
+                } else if (running === "n") {
+                    break;
+                } else {
+                    alert("Invalid input. The game will restart");
+                }
+            } else {
+                alert("Invalid input. The game will restart");
+            }
+        }
+   </script>
+</body>
+
+</html>
